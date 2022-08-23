@@ -1,5 +1,5 @@
 import React, { useCallback } from 'react'
-import ReactFlow, { useNodesState, useEdgesState, addEdge } from 'react-flow-renderer';
+import ReactFlow, { useNodesState, useEdgesState, addEdge, MarkerType} from 'react-flow-renderer';
 import SettingsIcon from '@mui/icons-material/Settings';
 import ColorSelectorNode from './ColorSelectorNode';
 import {ColorSelectorInput} from "./ColorSelectorNode"
@@ -107,13 +107,19 @@ const initialEdges = [
     source: 'horizontal-1',
     type: 'smoothstep',
     target: 'horizontal-2',
-    label : "1-2"
+    label : "1-2",
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
     // animated : true
   },
   {
     id: 'horizontal-e2-3',
     // source: 'horizontal-2',
     type: 'smoothstep',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
     // target: 'horizontal-3',
   },
   {
@@ -121,6 +127,9 @@ const initialEdges = [
     source: 'horizontal-3',
     type: 'smoothstep',
     target: 'horizontal-4',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
     // label: 'edge label',
   },
   {
@@ -128,12 +137,19 @@ const initialEdges = [
     source: 'horizontal-4',
     type: 'smoothstep',
     target: 'horizontal-5',
-    label : "4-5"
+    label : "4-5",
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
+    labelBgBorderRadius: 0,
   },
   {
     id: 'horizontal-e5-6',
     // source: 'horizontal-5',
     type: 'smoothstep',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
     // target: 'horizontal-6',
   },
   {
@@ -141,12 +157,18 @@ const initialEdges = [
     source: 'horizontal-6',
     type: 'smoothstep',
     target: 'horizontal-7',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
   },
   {
     id: 'horizontal-e7-8',
     source: 'horizontal-7',
     type: 'smoothstep',
     target: 'horizontal-8',
+    markerEnd: {
+      type: MarkerType.ArrowClosed,
+    },
   },
 ];
 
@@ -156,7 +178,7 @@ function Project1() {
 
   const onConnect = useCallback((params) => setEdges((els) => addEdge(params, els)), []);
   return (
-    <div style={{width: "100%", height : "300px"}} >
+    <div className = "floatingedges" style={{width: "100%", height : "300px",position : "relative"}} >
       <ReactFlow
       nodes={nodes}
       edges={edges}
@@ -168,6 +190,7 @@ function Project1() {
       nodeTypes={nodeTypes}
       defaultZoom={1}
     ></ReactFlow>
+    <button style={{position : "absolute", top : "50%", left : "20px"}} >+</button>
     </div>
   )
 }
