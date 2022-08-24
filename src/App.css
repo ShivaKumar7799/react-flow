@@ -5,10 +5,10 @@
   height: 100%;
 }
 
-.floatingedges .react-flow__handle {
+.react-flow__handle {
   opacity: 1;
   background-color: red !important;
   border-radius: 0px;
-  height: 6px;
-  width: 2px;
+  height: 8px;
+  width: 4px;
 }

@@ -4,21 +4,32 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import ColorSelectorNode from './ColorSelectorNode';
 import {ColorSelectorInput} from "./ColorSelectorNode"
 import '../../App.css'
+import SubFlowNode from './SubFlowNode';
 
 const nodeTypes = {
   selectorNode: ColorSelectorNode,
-  inputMode : ColorSelectorInput
+  inputMode : ColorSelectorInput,
+  subFlowNode : SubFlowNode
 };
 
 const initialNodes = [
   {
     id: 'A',
-    type: 'group',
+    type: 'subFlowNode',
     position: { x: 0, y: 0 },
     style: {
       width: 1000,
       height: 140,
     },
+  },
+  {
+    id : "B",
+    type : 'group',
+    position : { x : 0, y : 200},
+    style : {
+      width : 1000,
+      height : 140,
+    }
   },
   {
     id: 'horizontal-1',
@@ -56,7 +67,7 @@ const initialNodes = [
     type : "selectorNode",
     data: { label: 'Node 4' },
     position: { x: 400, y: 50 },
-    // parentNode: 'A',
+    parentNode: 'A',
     // extent: 'parent',
   },
   {
@@ -66,7 +77,7 @@ const initialNodes = [
     type : "selectorNode",
     data: { label: 'Node 5' },
     position: { x: 500, y: 50 },
-    parentNode: 'A',
+    parentNode: 'B',
     extent: 'parent',
   },
   {
@@ -76,7 +87,7 @@ const initialNodes = [
     type : "selectorNode",
     data: { label: 'Node 6' },
     position: { x: 600, y: 50 },
-    parentNode: 'A',
+    parentNode: 'B',
     extent: 'parent',
   },
   {
@@ -86,7 +97,7 @@ const initialNodes = [
     type : "selectorNode",
     data: { label: 'Node 7' },
     position: { x: 700, y: 50 },
-    parentNode: 'A',
+    parentNode: 'B',
     extent: 'parent',
   },
   {
@@ -96,7 +107,7 @@ const initialNodes = [
     type : "selectorNode",
     data: { label: 'Node 8' },
     position: { x: 800, y: 50 },
-    parentNode: 'A',
+    parentNode: 'B',
     extent: 'parent',
   },
 ];
@@ -191,7 +202,6 @@ function Project1() {
       nodeTypes={nodeTypes}
       defaultZoom={1}
     >
-      <button style={{position : "absolute", top : "50%", left : "0px"}} >+</button>
     </ReactFlow>
     
     </div>
